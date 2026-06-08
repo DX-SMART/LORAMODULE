@@ -1,7 +1,7 @@
 # LoRaModule Resource Download Center
 
 This repository provides technical documentation, testing tools, and reference source code for the full range of DX-SMART LoRa modules.
-If your module is not working or cannot be programmed, please read the Troubleshooting Guide first!
+If your module is not working or cannot be programmed, please read the **Troubleshooting Guide** first!
 
 ## 📂 Resource Download List
 
