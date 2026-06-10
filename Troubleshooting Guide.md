@@ -38,8 +38,7 @@ Reset@DTR Low(<-3V), ISP@RTS High
 ```text id="1mvx9d"
 Reset@DTR High(>+3V), ISP@RTS Low
 ```
-
-<img width="841" height="962" alt="wechat_2026-05-28_110105_842" src="https://github.com/user-attachments/assets/e12a1f38-ef8b-4fcd-a69b-1bb2fdc51284" />
+<img width="896" height="892" alt="洛阳" src="https://github.com/user-attachments/assets/889954bf-7a0c-414f-9c49-995c90116f22" />
 <img width="1343" height="740" alt="image" src="https://github.com/user-attachments/assets/b77b7ff8-9777-494a-b18d-32712869c67e" />
 
 ---
