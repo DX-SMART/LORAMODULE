@@ -24,7 +24,7 @@ Open the **MCUISP** software and confirm the following settings:
 1. Click `EnumPort` to automatically detect the serial port
 2. Select the correct COM port
 3. Set baud rate to `460800`
-4. Load the correct `.hex` firmware file
+4. Load the correct `.hex` firmware file（If you cannot find the .hex file, please check the path shown in the image to make sure it matches.）
 5. Configure RTS/DTR settings:
 
 ### PJ23:
@@ -40,6 +40,7 @@ Reset@DTR High(>+3V), ISP@RTS Low
 ```
 
 <img width="841" height="962" alt="wechat_2026-05-28_110105_842" src="https://github.com/user-attachments/assets/e12a1f38-ef8b-4fcd-a69b-1bb2fdc51284" />
+<img width="1343" height="740" alt="image" src="https://github.com/user-attachments/assets/b77b7ff8-9777-494a-b18d-32712869c67e" />
 
 ---
 
