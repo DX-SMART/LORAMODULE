@@ -15,61 +15,63 @@ jobs:
       - name: 檢出代碼
         uses: actions/checkout@v4
 
+      - name: 設置 Python 環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
       - name: 獲取流量數據
         run: |
           mkdir -p traffic
-          # 獲取訪問量數據 (Views)
-          curl -H "Authorization: token ${{ secrets.TRAFFIC_TOKEN }}" \
-               https://api.github.com/repos/DX-SMART/LoRaModule/traffic/views \
-               > traffic/views_$(date +%Y-%m-%d).json
-          
-          # 獲取克隆量數據 (Clones)
-          curl -H "Authorization: token ${{ secrets.TRAFFIC_TOKEN }}" \
-               https://api.github.com/repos/DX-SMART/LoRaModule/traffic/clones \
-               > traffic/clones_$(date +%Y-%m-%d).json
-
-      - name: 更新中文流量報告
-        run: |
           DATE=$(date +%Y-%m-%d)
           
-          # 1. 提取 14 天滾動總計數據
-          TOTAL_VIEWS=$(jq '.count' traffic/views_$DATE.json)
-          TOTAL_V_UNIQUES=$(jq '.uniques' traffic/views_$DATE.json)
-          TOTAL_CLONES=$(jq '.count' traffic/clones_$DATE.json)
-          TOTAL_C_UNIQUES=$(jq '.uniques' traffic/clones_$DATE.json)
+          # 1. 獲取訪問量數據
+          curl -H "Authorization: token ${{ secrets.TRAFFIC_TOKEN }}" \
+               https://api.github.com/repos/DX-SMART/LoRaModule/traffic/views \
+               > traffic/views_$DATE.json
+          
+          # 2. 獲取克隆量數據
+          curl -H "Authorization: token ${{ secrets.TRAFFIC_TOKEN }}" \
+               https://api.github.com/repos/DX-SMART/LoRaModule/traffic/clones \
+               > traffic/clones_$DATE.json
 
-          # 2. 提取昨日精準新增數據
-          DAILY_V=$(jq '.views[-1].count // 0' traffic/views_$DATE.json)
-          DAILY_V_U=$(jq '.views[-1].uniques // 0' traffic/views_$DATE.json)
-          DAILY_C=$(jq '.clones[-1].count // 0' traffic/clones_$DATE.json)
-          DAILY_C_U=$(jq '.clones[-1].uniques // 0' traffic/clones_$DATE.json)
+          # 3. 獲取熱門點擊路徑
+          curl -H "Authorization: token ${{ secrets.TRAFFIC_TOKEN }}" \
+               https://api.github.com/repos/DX-SMART/LoRaModule/traffic/popular/paths \
+               > traffic/paths_$DATE.json
 
+      - name: 提取當日基礎數據 (保留原歷史表功能)
+        run: |
+          DATE=$(date +%Y-%m-%d)
           REPORT_FILE="流量統計報告.md"
           
-          # 3. 定義表頭
-          HEADER_TITLE="# LoRaModule 倉庫流量統計報告"
-          HEADER_DESC="此文件由 GitHub Actions 自動生成，記錄每日新增數據與 14 天滾動總量。"
-          TABLE_HEAD="| 日期 | 當日新增瀏覽 | 當日獨立訪客 | 14天總計(瀏覽/人數) | 14天總計(克隆/人數) |"
-          TABLE_SEP="| :--- | :--- | :--- | :--- | :--- |"
+          DAILY_V=$(jq '.views[-1].count // 0' traffic/views_$DATE.json)
+          DAILY_V_U=$(jq '.views[-1].uniques // 0' traffic/views_$DATE.json)
+          TOTAL_VIEWS=$(jq '.count // 0' traffic/views_$DATE.json)
+          TOTAL_V_UNIQUES=$(jq '.uniques // 0' traffic/views_$DATE.json)
+          TOTAL_CLONES=$(jq '.count // 0' traffic/clones_$DATE.json)
+          TOTAL_C_UNIQUES=$(jq '.uniques // 0' traffic/clones_$DATE.json)
           
-          # 4. 構造新數據行
           NEW_LINE="| $DATE | $DAILY_V | $DAILY_V_U | $TOTAL_VIEWS / $TOTAL_V_UNIQUES | $TOTAL_CLONES / $TOTAL_C_UNIQUES |"
+          
+          # 先臨時存入一個檔案，等等給 Python 拼接
+          echo "$NEW_LINE" > traffic/today_line.txt
 
-          # 5. 重寫文件：保留表頭，將新行插入在最前面，然後拼接舊的數據行
-          if [ -f $REPORT_FILE ]; then
-              # 提取舊的數據行（從第 6 行開始的所有內容）
-              OLD_DATA=$(tail -n +6 $REPORT_FILE)
-          else
-              OLD_DATA=""
+      - name: 🐍 執行 Python 腳本累加並更新總排行榜
+        run: |
+          # 呼叫剛才寫好的 Python 進行全歷史數據累加與排序
+          python update_traffic.py
+          
+          # 將今日新增的趨勢行追加進報告
+          if [ -f traffic/today_line.txt ]; then
+            cat traffic/today_line.txt >> 流量統計報告.md
           fi
-
-          # 重新組合成完整文件
-          echo -e "$HEADER_TITLE\n$HEADER_DESC\n\n$TABLE_HEAD\n$TABLE_SEP\n$NEW_LINE\n$OLD_DATA" > $REPORT_FILE
 
       - name: 保存到倉庫
         run: |
           git config --global user.name "DX-SMART-BOT"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 把統計的 json 資料庫和 md 報告都提交上去
           git add traffic/ 流量統計報告.md
-          git commit -m "自動更新流量數據: $(date +%Y-%m-%d)" || exit 0
+          git commit -m "自動更新流量與歷史總排行榜: $(date +%Y-%m-%d)" || exit 0
           git push
