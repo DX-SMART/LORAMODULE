@@ -9,11 +9,11 @@
   },
   "/DX-SMART/LoRaModule/blob/main/Troubleshooting Guide.md": {
     "count": 30,
-    "uniques": 17
+    "uniques": 18
   },
   "/DX-SMART/LoRaModule": {
-    "count": 37,
-    "uniques": 15
+    "count": 41,
+    "uniques": 17
   },
   "/DX-SMART/LORAMODULE/blob/main/DX-LR01&02-900Mhz Development & User Information.rar": {
     "count": 21,
@@ -21,7 +21,7 @@
   },
   "/DX-SMART/LoRaModule/blob/main/DX-LR01&02-433Mhz Development & User Information.rar": {
     "count": 18,
-    "uniques": 8
+    "uniques": 9
   },
   "/DX-SMART/LoRaModule/blob/main/DX-LR30-900Mhz Information Package.rar": {
     "count": 15,
@@ -46,5 +46,9 @@
   "/DX-SMART/LoRaModule/graphs/traffic": {
     "count": 13,
     "uniques": 1
+  },
+  "/DX-SMART/LoRaModule/blob/main/DX-LR31&32-900Mhz Development & User Information.rar": {
+    "count": 13,
+    "uniques": 6
   }
 }
