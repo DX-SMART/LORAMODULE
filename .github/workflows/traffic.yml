@@ -40,6 +40,11 @@ jobs:
                https://api.github.com/repos/DX-SMART/LoRaModule/traffic/popular/paths \
                > traffic/paths_$DATE.json
 
+          # 4. 🔥【新增】获取引流渠道来源数据 (Referring Sites)
+          curl -H "Authorization: token ${{ secrets.TRAFFIC_TOKEN }}" \
+               https://api.github.com/repos/DX-SMART/LoRaModule/traffic/popular/referrers \
+               > traffic/referrers_$DATE.json
+
       - name: 提取当日基础数据
         run: |
           DATE=$(date +%Y-%m-%d)
@@ -51,17 +56,13 @@ jobs:
           TOTAL_CLONES=$(jq '.clones[-1].count // 0' traffic/clones_$DATE.json)
           TOTAL_C_UNIQUES=$(jq '.clones[-1].uniques // 0' traffic/clones_$DATE.json)
           
-          # 注意：原脚本的表头是繁体，这里我们统一改成简体的表头格式进行匹配或初始化
-          # 如果你的报告已经是简体，下面这行会自动追加
           NEW_LINE="| $DATE | $DAILY_V | $DAILY_V_U | $TOTAL_VIEWS / $TOTAL_V_UNIQUES | $TOTAL_CLONES / $TOTAL_C_UNIQUES |"
-          
           echo "$NEW_LINE" > traffic/today_line.txt
 
       - name: 🐍 执行 Python 脚本累加并更新总排行榜
         run: |
           python update_traffic.py
           
-          # 将今日新增的趋势行追加进报告
           if [ -f traffic/today_line.txt ]; then
             cat traffic/today_line.txt >> 流量统计报告.md
           fi
@@ -71,11 +72,8 @@ jobs:
           git config --global user.name "DX-SMART-BOT"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # 🔥 强制删除本地的临时中转文件，确保它们绝对不会被提交
+          # 强制删除本地的临时中转文件，确保不进仓库
           rm -f traffic/today_line.txt
-          
-          # 检查是否有以前残留的旧 json，如果有也顺便清理（可选）
-          # rm -f traffic/views_*.json traffic/clones_*.json traffic/paths_*.json 2>/dev/null || true
           
           git add traffic/ 流量统计报告.md
           git commit -m "自动更新流量与历史总排行榜: $(date +%Y-%m-%d)" || exit 0
