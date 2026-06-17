@@ -1,0 +1,26 @@
+{
+  "github.com": {
+    "count": 270,
+    "uniques": 69
+  },
+  "yandex.ru": {
+    "count": 7,
+    "uniques": 3
+  },
+  "Bing": {
+    "count": 3,
+    "uniques": 3
+  },
+  "search.brave.com": {
+    "count": 2,
+    "uniques": 2
+  },
+  "Google": {
+    "count": 2,
+    "uniques": 1
+  },
+  "DuckDuckGo": {
+    "count": 1,
+    "uniques": 1
+  }
+}
