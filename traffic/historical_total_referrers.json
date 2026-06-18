@@ -1,30 +1,30 @@
 {
   "github.com": {
-    "count": 847,
-    "uniques": 217
+    "count": 1154,
+    "uniques": 296
   },
   "yandex.ru": {
-    "count": 20,
-    "uniques": 8
+    "count": 26,
+    "uniques": 10
   },
   "Bing": {
-    "count": 9,
-    "uniques": 9
+    "count": 12,
+    "uniques": 12
   },
   "search.brave.com": {
-    "count": 6,
-    "uniques": 6
+    "count": 8,
+    "uniques": 8
   },
   "Google": {
-    "count": 6,
-    "uniques": 3
+    "count": 8,
+    "uniques": 4
   },
   "DuckDuckGo": {
-    "count": 9,
-    "uniques": 3
+    "count": 16,
+    "uniques": 4
   },
   "en.szdx-smart.com": {
-    "count": 3,
-    "uniques": 2
+    "count": 6,
+    "uniques": 4
   }
 }
