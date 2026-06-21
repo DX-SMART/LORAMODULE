@@ -1,7 +1,7 @@
 {
   "/DX-SMART/LORAMODULE": {
     "count": 61,
-    "uniques": 31
+    "uniques": 33
   },
   "/DX-SMART/LORAMODULE/blob/main/DX-LR30-900Mhz Information Package.rar": {
     "count": 32,
@@ -12,8 +12,8 @@
     "uniques": 22
   },
   "/DX-SMART/LoRaModule": {
-    "count": 59,
-    "uniques": 28
+    "count": 60,
+    "uniques": 29
   },
   "/DX-SMART/LORAMODULE/blob/main/DX-LR01&02-900Mhz Development & User Information.rar": {
     "count": 21,
@@ -40,8 +40,8 @@
     "uniques": 9
   },
   "/DX-SMART/LoRaModule/tree/main/traffic": {
-    "count": 33,
-    "uniques": 12
+    "count": 36,
+    "uniques": 13
   },
   "/DX-SMART/LoRaModule/graphs/traffic": {
     "count": 17,
@@ -50,5 +50,9 @@
   "/DX-SMART/LoRaModule/blob/main/DX-LR31&32-900Mhz Development & User Information.rar": {
     "count": 13,
     "uniques": 6
+  },
+  "/DX-SMART/LoRaModule/pulse": {
+    "count": 16,
+    "uniques": 1
   }
 }
