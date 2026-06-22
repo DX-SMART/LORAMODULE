@@ -33,7 +33,7 @@
   },
   "/DX-SMART/LoRaModule/blob/main/README.md": {
     "count": 23,
-    "uniques": 10
+    "uniques": 11
   },
   "/DX-SMART/LoRaModule/blob/main/DX-LR01&02-900Mhz Development & User Information.rar": {
     "count": 12,
@@ -54,5 +54,9 @@
   "/DX-SMART/LoRaModule/pulse": {
     "count": 16,
     "uniques": 1
+  },
+  "/DX-SMART/LoRaModule/blob/main/DX-LR30-900Mhz Development & User Information.rar": {
+    "count": 16,
+    "uniques": 11
   }
 }
