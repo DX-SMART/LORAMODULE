@@ -21,6 +21,7 @@ Please find your product model below and click the corresponding "Download" link
 | **DX-LR30** | 900MHz | [Download (RAR)](https://github.com/DX-SMART/LoRaModule/releases/download/DX-LR30-900Mhz/DX-LR30-900Mhz.Development.User.Information.rar) |
 | **DX-LR31 & 32** | 433MHz | [Download (RAR)](https://github.com/DX-SMART/LoRaModule/releases/download/DX-LR31%2632-433Mhz/DX-LR31.32-433Mhz.Development.User.Information.rar) |
 | **DX-LR31 & 32** | 900MHz | [Download (RAR)](https://github.com/DX-SMART/LoRaModule/releases/download/DX-LR31%2632-900Mhz/DX-LR31.32-900Mhz.Development.User.Information.rar) |
+| **DX-LR35** | 900MHz | [Download (RAR)](https://github.com/DX-SMART/LoRaModule/releases/download/DX-LR35-900M30S/DX-LR35-900M30S.Development.User.Information.rar) |
 | **DX-LR41 & 42** | 300MHzOr900MHz | [Download (RAR)](https://github.com/DX-SMART/LoRaModule/releases/download/DX-LR41%26LR42/DX-LR41.LR42.Development.User.Information.rar) |
 
 
