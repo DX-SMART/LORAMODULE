@@ -41,9 +41,6 @@ The supported frequency ranges are:
 Please refer to the product documentation for the detailed supported frequency bands.
 
 
-**中文备注：**  
-LR20、LR30 可以通过编程修改工作频段。433 版本支持 433–470 MHz，900 版本支持 850–930 MHz。如果客户需要的频段不在支持范围内，需要联系我们确认是否可以定制。
-
 ---
 
 ## LORA-004 — Programming Failure
