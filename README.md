@@ -3,6 +3,16 @@
 This repository provides technical documentation, testing tools, and reference source code for the full range of DX-SMART LoRa modules.
 If your module is not working or cannot be programmed, please read the **Troubleshooting Guide** first!
 
+This repository provides technical documentation, testing tools, and reference source code for the full range of DX-SMART LoRa modules.
+## 🛠️ Quick Documentation & Support
+
+| Document | Description | Direct Link |
+| :--- | :--- | :--- |
+| **Frequently Asked Questions** | Common queries about firmware, programming, frequency bands, etc. | 🔗 [View FAQ](./FAQ.md) |
+| **Troubleshooting Guide** | Step-by-step guidance for connection issues and flashing errors | 🔗 [View Guide](./Troubleshooting%20Guide.md) |
+
+---
+
 ## 📂 Resource Download List
 
 Please find your product model below and click the corresponding "Download" link to get the resource packet.
