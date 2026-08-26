@@ -58,5 +58,19 @@ Please refer to the product documentation for the detailed supported frequency b
 
 **A:** No. The LoRa module cannot directly communicate with a mobile phone, so it cannot be directly operated through a phone.
 
+---
+
+## LORA-006 – Original Factory Firmware Location
+
+**Q: Where can I find the original factory firmware (HEX file) to restore the device?**
+
+**A:** You can find the original factory firmware (`DX_TESET.hex`) inside the provided resource package. Unzip the package and navigate to the following path:
+
+`07 Programming code demonstration` -> `LR20&30-900` -> `LR20&30-900` -> `Project` -> `Objects`
+
+Inside the **Objects** folder, locate **`DX_TESET.hex`** and re-flash it onto the MCU (STM32F103C8T6) using an **ST-Link**, **J-Link**, or **Serial ISP tool** to restore the default factory settings.
+<img width="696" height="625" alt="image" src="https://github.com/user-attachments/assets/16856f6c-1e94-4ce7-89de-92f833f0a1fd" />
+
+
 
 
